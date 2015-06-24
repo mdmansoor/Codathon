@@ -1,0 +1,41 @@
+package com.flopper.framework.common;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class kandycustomerlogin extends ActionSupport implements
+		ServletRequestAware {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	HttpServletRequest request;
+
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public HttpServletRequest getServletRequest() {
+		return this.request;
+	}
+
+	public String execute() {
+		try {
+
+			request.setAttribute("demo", "value Stored in Request....");
+			request.setAttribute("apikey", "DAK5aa3e878df1d46ca9f83e27ad0dfba1f");
+			request.setAttribute("kandyusername", "customer");
+			request.setAttribute("kandyuserpassword", "reset@123");
+			request.setAttribute("agent", "admin@webrtc.techmahindra.com");
+
+			return SUCCESS;
+		} catch (Exception e) {
+
+			return "error";
+		}
+	}
+}

@@ -14,7 +14,7 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 		<action name="appointmentbooking"
 			class="com.flopper.framework.customer.appointmentbookingbean">
 			<result name="input">appointmentbooking.jsp</result>
-			<result name="success">../Index.jsp</result>
+			<result name="success">appointmentsuccess.jsp</result>
 			<result name="error">appointmentbooking.jsp</result>
 		</action>
 	</package>

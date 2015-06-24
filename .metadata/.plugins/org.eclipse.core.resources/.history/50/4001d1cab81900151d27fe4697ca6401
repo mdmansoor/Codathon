@@ -1,0 +1,16 @@
+package com.flopper.framework.calender;
+
+public class EventGenration {
+
+	public String genrateEvent(String date, String hour, String minute,
+			String email) {
+
+		return null;
+
+	}
+
+	public String genrateEventId(String date, String hour, String minute,
+			String email) {
+
+	}
+}

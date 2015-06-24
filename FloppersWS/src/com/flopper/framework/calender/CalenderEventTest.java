@@ -1,58 +1,68 @@
 package com.flopper.framework.calender;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.flopper.framework.constant.Constants;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventAttendee;
 import com.google.api.services.calendar.model.EventDateTime;
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
 public class CalenderEventTest {
 
-    public static void main(String[] args) throws IOException {
-        // TODO Auto-generated method stub
-        Event event = new Event();
-        Calendar service =null;
+	public static void main(String[] args) throws IOException {
 
-        event.setSummary("Floppers  ");
-        event.setLocation("IND");
-        event.setDescription("Appointment with Executive");
+		String date = "24/06/2015";
+		String hour = "9";
+		String minute = "00";
+		// TODO Auto-generated method stub
+		Event event = new Event();
+		Calendar service = null;
+		Date startDate = null, endDate = null;
 
-        ArrayList<EventAttendee> attendees = new ArrayList<EventAttendee>();
-        attendees.add(new EventAttendee().setEmail("basha54@gmail.com"));
-       // attendees.add(new EventAttendee().setEmail("mmansoor@ymail.com"));
-        // ...
-        event.setAttendees(attendees);
+		event.setSummary("Floppers  ");
+		event.setLocation("IND");
+		event.setDescription("Your Appointment with Executive is Schedulae @ "
+				+ hour + ":" + minute);
 
+		ArrayList<EventAttendee> attendees = new ArrayList<EventAttendee>();
+		// attendees.add(new EventAttendee().setEmail("basha54@gmail.com"));
+		attendees.add(new EventAttendee().setEmail("mmansoor@ymail.com"));
+		// ...
+		event.setAttendees(attendees);
 
-        // set the number of days
-        java.util.Calendar startCal = java.util.Calendar.getInstance();
-        startCal.set(java.util.Calendar.MONTH,5 );
-        startCal.set(java.util.Calendar.DATE, 10);
-        startCal.set(java.util.Calendar.HOUR_OF_DAY, 17);
-        startCal.set(java.util.Calendar.MINUTE, 0);
-        Date startDate = startCal.getTime();
+		final SimpleDateFormat dateFormat = new SimpleDateFormat(
+				Constants.DATE_FORMAT);
+		try {
+			startDate = dateFormat.parse(date);
+			endDate = dateFormat.parse(date);
+			startDate.setHours(Integer.parseInt(hour));
+			startDate.setMinutes(Integer.parseInt(minute));
 
-        System.out.println(startDate);
-        java.util.Calendar endCal = java.util.Calendar.getInstance();
-        endCal.set(java.util.Calendar.MONTH, 5);
-        endCal.set(java.util.Calendar.DATE, 10);
-        endCal.set(java.util.Calendar.HOUR_OF_DAY, 19);
-        endCal.set(java.util.Calendar.MINUTE, 0);
-        Date endDate = endCal.getTime();
+			endDate.setHours(Integer.parseInt(hour)+1);
+			endDate.setMinutes(Integer.parseInt(minute));
+		} catch (Exception e) {
 
-        System.out.println(endDate);
+		}
 
-        DateTime start = new DateTime(startDate);
-        event.setStart(new EventDateTime().setDateTime(start));
-        DateTime end = new DateTime(endDate);
-        event.setEnd(new EventDateTime().setDateTime(end));
+		DateTime start = new DateTime(startDate);
+		event.setStart(new EventDateTime().setDateTime(start));
+		event.getStart().setTimeZone("Asia/Kolkata");
+		DateTime end = new DateTime(endDate);
+		event.setEnd(new EventDateTime().setDateTime(end));
+		event.getEnd().setTimeZone("Asia/Kolkata");
 
-        service =GoogleApiCalenderCredential.getInstance().getCalendar();
-        Event createdEvent = service.events().insert("primary", event).setSendNotifications(true).execute();
+		service = GoogleApiCalenderCredential.getInstance().getCalendar();
+		Event createdEvent = service.events().insert("primary", event)
+				.setSendNotifications(true).execute();
 
-        System.out.println("Data is :"+createdEvent.getId()); 
-    }
-}  
+		System.out.println("Data is :" + createdEvent.getId());
+
+	}
+}

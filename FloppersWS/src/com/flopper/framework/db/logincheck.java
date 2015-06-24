@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.flopper.framework.constant.Contsants;
+import com.flopper.framework.constant.Constants;
 
 public class logincheck {
 
@@ -15,13 +15,13 @@ public class logincheck {
 		try {
 
 			stmt = conn
-					.prepareStatement("select * from customerusers c where c.username=? and c.password=?");
+					.prepareStatement("select * from usercredential c where c.username=? and c.password=?");
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				loginHistory(username, conn);
-				return Contsants.SUCCESS;
+				return Constants.SUCCESS;
 
 			} else {
 				return "Invalid credential";
@@ -29,7 +29,7 @@ public class logincheck {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return Contsants.UNKNOWN_ERROR;
+			return Constants.UNKNOWN_ERROR;
 
 		} finally {
 
@@ -50,7 +50,7 @@ public class logincheck {
 		try {
 
 			stmt = conn
-					.prepareStatement("insert into loginhistory values(((select max(loginid) from loginhistory)+1),?,sysdate,null)");
+					.prepareStatement("insert into loginhistory values(((select nvl( max(loginid),0) from loginhistory)+1),?,sysdate,null)");
 			stmt.setString(1, username);
 			int rs = stmt.executeUpdate();
 

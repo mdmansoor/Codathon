@@ -1,0 +1,73 @@
+package com.flopper.framework.calender;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.flopper.framework.constant.Contsants;
+import com.flopper.framework.db.DBHelper;
+
+public class EventGenration {
+
+	public String genrateEvent(String date, String hour, String minute,
+			String email) {
+
+		return null;
+
+	}
+
+	public String genrateEventId(String date, String hour, String minute,
+			String email) {
+		String eventID;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection conn = DBHelper.getConnection();
+		try {
+
+			stmt = conn
+					.prepareStatement("select ('FB'||to_char(systimestamp,'yymmddhh')||EVENT_SEQ.nextval) EventID from dual;");
+			
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				eventID=rs.getString(1);
+				
+				return Contsants.SUCCESS;
+
+			} else {
+				return "Invalid credential";
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Contsants.UNKNOWN_ERROR;
+
+		} finally {
+
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+
+	}
+	
+	public void insertEventCreation(String username, Connection conn) {
+		PreparedStatement stmt = null;
+		try {
+
+			stmt = conn
+					.prepareStatement("insert into loginhistory values(((select nvl( max(loginid),0) from loginhistory)+1),?,sysdate,null)");
+			stmt.setString(1, username);
+			int rs = stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

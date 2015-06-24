@@ -1,0 +1,62 @@
+package com.flopper.framework.calender;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.Calendar;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventAttendee;
+import com.google.api.services.calendar.model.EventDateTime;
+public class CopyOfCalenderEventTest {
+
+    public static void main(String[] args) throws IOException {
+    	
+    	String date="24/06/2015";
+    	String hour="9";
+    	String minute="00";
+        // TODO Auto-generated method stub
+        Event event = new Event();
+        Calendar service =null;
+
+        event.setSummary("Floppers  ");
+        event.setLocation("IND");
+        event.setDescription("Appointment with Executive");
+
+        ArrayList<EventAttendee> attendees = new ArrayList<EventAttendee>();
+        //attendees.add(new EventAttendee().setEmail("basha54@gmail.com"));
+       attendees.add(new EventAttendee().setEmail("mdmansoor16@gmail.com"));
+        // ...
+        event.setAttendees(attendees);
+
+
+        // set the number of days
+        java.util.Calendar startCal = java.util.Calendar.getInstance();
+        startCal.set(java.util.Calendar.MONTH,7 );
+        startCal.set(java.util.Calendar.DATE, 10);
+        startCal.set(java.util.Calendar.HOUR_OF_DAY, 17);
+        startCal.set(java.util.Calendar.MINUTE, 0);
+        Date startDate = startCal.getTime();
+
+        System.out.println(startDate);
+        java.util.Calendar endCal = java.util.Calendar.getInstance();
+        endCal.set(java.util.Calendar.MONTH, 7);
+        endCal.set(java.util.Calendar.DATE, 10);
+        endCal.set(java.util.Calendar.HOUR_OF_DAY, 19);
+        endCal.set(java.util.Calendar.MINUTE, 0);
+        Date endDate = endCal.getTime();
+
+        System.out.println(endDate);
+
+        DateTime start = new DateTime(startDate);
+        event.setStart(new EventDateTime().setDateTime(start));
+        DateTime end = new DateTime(endDate);
+        event.setEnd(new EventDateTime().setDateTime(end));
+
+        service =GoogleApiCalenderCredential.getInstance().getCalendar();
+       Event createdEvent = service.events().insert("primary", event).setSendNotifications(true).execute();
+
+      //  System.out.println("Data is :"+createdEvent.getId()); 
+    }
+}  

@@ -1,6 +1,6 @@
 package com.flopper.framework.customer;
 
-import com.flopper.framework.constant.Contsants;
+import com.flopper.framework.constant.Constants;
 import com.flopper.framework.db.logincheck;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -57,7 +57,7 @@ public class customerloginbean extends ActionSupport {
 	public String execute() throws Exception {
 		logincheck login = new logincheck();
 		String result = login.userLogin(username, password);
-		if (result.equals(Contsants.SUCCESS))
+		if (result.equals(Constants.SUCCESS))
 			return SUCCESS;
 		else
 			return INPUT;

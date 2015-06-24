@@ -1,0 +1,12 @@
+package com.flopper.framework.db;
+
+import java.util.HashMap;
+
+public class kandycustomerinfo {
+
+	public HashMap<String, String> getKandyCustomerInfo(String kandycustomername) {
+
+		return null;
+	}
+
+}

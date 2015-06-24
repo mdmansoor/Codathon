@@ -1,8 +1,21 @@
 package com.flopper.framework.customer;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.flopper.framework.calender.EventGenration;
+import com.flopper.framework.constant.Constants;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class appointmentbookingbean extends ActionSupport {
+public class appointmentbookingbean extends ActionSupport implements
+		ServletRequestAware {
 	/**
 	 * 
 	 */
@@ -11,6 +24,16 @@ public class appointmentbookingbean extends ActionSupport {
 	private String hour;
 	private String minute;
 	private String emailID;
+
+	HttpServletRequest request;
+
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public HttpServletRequest getServletRequest() {
+		return this.request;
+	}
 
 	public String getAppointmentDate() {
 		return appointmentDate;
@@ -56,7 +79,16 @@ public class appointmentbookingbean extends ActionSupport {
 		if (appointmentDate.equals("")) {
 			this.addFieldError("appointmentDate",
 					"AppointmentDate cannot be blank");
+		}
 
+		if (!validateDate(appointmentDate)) {
+			this.addFieldError("appointmentDate",
+					"Please enter  valid date dd/mm/yyyy");
+		}
+
+		if (!validateDateGreaterThanCurrentDate(appointmentDate)) {
+			this.addFieldError("appointmentDate",
+					"Date  should be greater than current date");
 		}
 		return;
 	}
@@ -70,7 +102,6 @@ public class appointmentbookingbean extends ActionSupport {
 	}
 
 	public void validateMinute() {
-		this.addFieldError("minute", "Minute cannot be blank");
 		if (minute.equals("")) {
 			this.addFieldError("minute", "Minute cannot be blank");
 
@@ -99,13 +130,48 @@ public class appointmentbookingbean extends ActionSupport {
 		return false;
 	}
 
+	public final boolean validateDate(String date) {
+		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
+		sdf.setLenient(false);
+		try {
+			sdf.parse(date);
+			return true;
+		} catch (ParseException ex) {
+			return false;
+		}
+	}
+
+	public final boolean validateDateGreaterThanCurrentDate(String date) {
+
+		try {
+			final SimpleDateFormat dateFormat = new SimpleDateFormat(
+					Constants.DATE_FORMAT);
+			Date dLastUpdateDate = dateFormat.parse(date);
+			Date dCurrentDate = dateFormat.parse(dateFormat.format(new Date()));
+			if (dLastUpdateDate.after(dCurrentDate)) {
+				System.out.println(true);
+				return true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	@Override
 	public String execute() throws Exception {
-		System.out.println(appointmentDate + " " + hour + " " + minute);
+		Map<String, String> map = new HashMap<String, String>();
 
-		if (appointmentDate.equals("mans"))
+		map = new EventGenration().genrateEventId(appointmentDate, hour,
+				minute, emailID);
+
+		if (map.get(Constants.RESULT).equals(Constants.SUCCESS)) {
+			request.setAttribute("EventID", map.get("EventID"));
+			request.setAttribute("Time", hour + ":" + minute);
+
 			return SUCCESS;
-		else
+		} else
 			return ERROR;
 	}
 }
