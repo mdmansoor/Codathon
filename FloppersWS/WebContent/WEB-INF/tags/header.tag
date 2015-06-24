@@ -1,12 +1,16 @@
 <%@tag body-content="empty"%>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags"%>
+<div class="header">
+	<table>
+		<tr>
+			<td width="150px"><img src="../images/logo.png" class="logo" ></td>
 
-<div class="row">
-	<div class="col-xs-8 col-xs-offset-2" id="activity-container">
-		<div id="app-details">
-			<h1 class="h2">Bank at your door Step</h1>
-			<p>
-				<i>To provide a hassle free banking for our customer.</i>
-			</p>
-		</div>
-	</div>
+			<td>
+				<h1 style="margin-top: 0px !important;">Bank at your door Step</h1>
+				<p>
+					<i>To provide a hassle free banking for our customer.</i>
+				</p>
+			</td>
+		</tr>
+	</table>
 </div>

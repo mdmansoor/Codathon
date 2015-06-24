@@ -37,7 +37,7 @@
 						id="appointmentDate_icon" src="../codebase/imgs/calendar.gif"
 						border="0"></span></td>
 				<td><div id="appointmentDate_error" class="level4_error">
-						<s:fielderror fieldName="appointmentDate">
+						<s:fielderror fieldName="appointmentDate" cssClass="level4_error">
 						</s:fielderror>
 					</div></td>
 			</tags:rowOdd>
@@ -64,10 +64,11 @@
 			</select></td>
 
 			<td><div id="hour_error" class="level4_error">
-					<s:fielderror fieldName="hour">
+					<s:fielderror fieldName="hour" cssClass="level4_error">
 					</s:fielderror>
 				</div></td>
-			<td><div id="minute_error" class="level4_error">
+			<td><div id="minute_error" class="level4_error"
+					cssClass="level4_error">
 					<s:fielderror fieldName="minute">
 					</s:fielderror>
 				</div></td>
@@ -76,7 +77,7 @@
 			<td>Email address</td>
 			<td><input type="text" id="emailID" name="emailID"></td>
 			<td><div id="emailID_error" class="level4_error">
-					<s:fielderror fieldName="emailID">
+					<s:fielderror fieldName="emailID" cssClass="level4_error">
 					</s:fielderror>
 				</div></td>
 		</tags:rowOdd>

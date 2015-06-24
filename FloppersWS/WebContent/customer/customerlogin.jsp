@@ -11,32 +11,36 @@
 </head>
 <body>
 	<tags:header />
+	<div class="body">
+		<s:form action="customerlogin">
+			<tr>
+				<tags:rowOdd>
 
-	<s:form action="customerlogin">
-		<tr>
-			<tags:rowOdd>
+					<td><label>Username</label></td>
+					<td><input type="text" name="username" id="username"></td>
+					<td><div id="username_error" class="level4_error">
+							<s:fielderror fieldName="username" cssClass="level4_error">
 
-				<td><label>Username</label></td>
-				<td><input type="text" name="username" id="username"></td>
-				<td><div id="username_error" class="level4_error"> <s:fielderror
-							fieldName="username">
+							</s:fielderror>
+						</div></td>
+				</tags:rowOdd>
+			</tr>
+			<tr>
+				<tags:rowEven>
+					<td><label>Password</label></td>
+					<td><input type="password" name="password" id="password"></td>
+					<td><div id="password_error" class="level4_error">
+							<s:fielderror fieldName="password" cssClass="level4_error">
+							</s:fielderror>
+						</div></td>
+				</tags:rowEven>
+			</tr>
+			<tr>
+				<tags:submitreset />
+			</tr>
+		</s:form>
+	</div>
 
-						</s:fielderror></div></td>
-			</tags:rowOdd>
-		</tr>
-		<tr>
-			<tags:rowEven>
-				<td><label>Password</label></td>
-				<td><input type="password" name="password" id="password"></td>
-				<td><div id="password_error" class="level4_error"> <s:fielderror
-							fieldName="password">
-						</s:fielderror></div></td>
-			</tags:rowEven>
-		</tr>
-		<tr>
-			<tags:submitreset />
-		</tr>
-	</s:form>
-	<tags:footer />
 </body>
+<tags:footer />
 </html>

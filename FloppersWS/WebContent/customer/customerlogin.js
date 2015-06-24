@@ -8,6 +8,7 @@ function clearErrors() {
 }
 
 function doRevalidate() {
+	return;
 	if (!validateUsername())
 		errors++;
 

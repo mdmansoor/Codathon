@@ -12,7 +12,7 @@
 <body>
 
 	<tags:header />
-
+	<tags:menu></tags:menu>
 	<div class="row">
 
 		<div class="col-md-12">
