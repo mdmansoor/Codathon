@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <%@taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 <html>
 <head>
-<tags:dependencies>
-</tags:dependencies>
+<tags:dependencies></tags:dependencies>
 <tags:script src="common/csagent.js" />
 </head>
 <body class="brand-lighter">
@@ -154,6 +154,6 @@
 			</div>
 		</div>
 	</div>
-	<tags:footer />
 </body>
+<tags:footer />
 </html>

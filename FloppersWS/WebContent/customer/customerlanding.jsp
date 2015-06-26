@@ -31,6 +31,12 @@
 				</div>
 			</button>
 		</div>
+		<div class="col-md-12">
+			<button class="btn btn-primary pull-right" id="support-btn"
+				onclick="onSupport()" value="Have an appointment">
+				
+			</button>
+		</div>
 	</div>
 	<tags:footer />
 </body>

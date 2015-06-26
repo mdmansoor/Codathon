@@ -1,0 +1,9 @@
+<%@tag body-content="empty"%>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags"%>
+<div class="header">
+	<tags:images src="images/logo.png" />
+	<h1 style="margin-top: 0px !important;">Bank at your door Step</h1>
+	<p>
+		<i>To provide a hassle free banking for our customer.</i>
+	</p>
+</div>

@@ -32,7 +32,7 @@ public class kandycustomerlogin extends ActionSupport implements
 			kandycustomerinfo customerinfo = new kandycustomerinfo();
 
 			HashMap<String, String> map = customerinfo
-					.getKandyCustomerInfo("customer");
+					.getKandyCustomerInfo("customer1");
 			if (!(map==null) ){
 				request.setAttribute("apikey", map.get("apikey"));
 				request.setAttribute("kandyusername", map.get("kandyusername"));

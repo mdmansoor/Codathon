@@ -1,6 +1,6 @@
 <%@tag body-content="empty"%>
 
-<div id="po_footer" align="center">
+<div class="footer" align="center">
 	<table>
 		<tr id="po_footer_links">
 			<td > © Flopper's Bank  &nbsp </td>

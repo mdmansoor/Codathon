@@ -12,7 +12,7 @@
 <body>
 
 	<tags:header />
-
+	<tags:menu></tags:menu>
 	<div class="row">
 
 		<div class="col-md-12">
@@ -29,6 +29,12 @@
 				<div class="help">
 					<tags:images src="agents/cslogo.jpg" />
 				</div>
+			</button>
+		</div>
+		<div class="col-md-12">
+			<button class="btn btn-primary pull-right" id="support-btn"
+				onclick="onSupport()" value="Have an appointment">
+				
 			</button>
 		</div>
 	</div>
