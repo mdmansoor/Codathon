@@ -76,9 +76,9 @@ public class customerloginbean extends ActionSupport implements
 	public String execute() throws Exception {
 		logincheck login = new logincheck();
 		Map<String, String> map = new HashMap<String, String>();
-
+		return SUCCESS;
 	
-		HttpSession session =request.getSession(true);
+		/*HttpSession session =request.getSession(true);
 		map = login.userLogin(username, password);
 		if (map.get(Constants.RESULT).equals(Constants.SUCCESS)) {
 
@@ -86,7 +86,7 @@ public class customerloginbean extends ActionSupport implements
 			session.setAttribute("USER_NAME", username);
 			return SUCCESS;
 		} else
-			return ERROR;
+			return ERROR;*/
 
 	}
 

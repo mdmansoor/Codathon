@@ -7,7 +7,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <filter>
+<!--   <filter>
     <display-name>RefererCheckFilter</display-name>
     <filter-name>RefererCheckFilter</filter-name>
     <filter-class>com.flopper.framework.filter.RefererCheckFilter</filter-class>
@@ -15,7 +15,7 @@
   <filter-mapping>
     <filter-name>RefererCheckFilter</filter-name>
     <url-pattern>/customer/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>

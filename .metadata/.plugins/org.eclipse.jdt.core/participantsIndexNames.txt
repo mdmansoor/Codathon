@@ -1,7 +1,7 @@
 INDEX VERSION 1.126
-D:\Mansoor\dummy\Codathon\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3648967889.index
+D:\dummy\Codathon\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3648967889.index
 \FloppersWS\src
-D:\Mansoor\dummy\Codathon\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3239384171.index
+D:\dummy\Codathon\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3239384171.index
 \FloppersWS\src
-D:\Mansoor\dummy\Codathon\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3449410115.index
+D:\dummy\Codathon\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3449410115.index
 \FloppersWS\src

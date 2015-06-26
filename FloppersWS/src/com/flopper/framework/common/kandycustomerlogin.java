@@ -29,7 +29,8 @@ public class kandycustomerlogin extends ActionSupport implements
 	public String execute() {
 		try {
 
-			kandycustomerinfo customerinfo = new kandycustomerinfo();
+			return SUCCESS;
+			/*kandycustomerinfo customerinfo = new kandycustomerinfo();
 
 			HashMap<String, String> map = customerinfo
 					.getKandyCustomerInfo("customer1");
@@ -39,7 +40,7 @@ public class kandycustomerlogin extends ActionSupport implements
 				request.setAttribute("kandyuserpassword", map.get("password"));
 				request.setAttribute("agent", "admin@webrtc.techmahindra.com");
 				return SUCCESS;
-			}
+			}*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

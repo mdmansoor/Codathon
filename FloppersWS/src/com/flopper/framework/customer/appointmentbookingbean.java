@@ -161,7 +161,8 @@ public class appointmentbookingbean extends ActionSupport implements
 
 	@Override
 	public String execute() throws Exception {
-		Map<String, String> map = new HashMap<String, String>();
+		return SUCCESS;
+		/*Map<String, String> map = new HashMap<String, String>();
 
 		map = new EventGenration().genrateEventId(appointmentDate, hour,
 				minute, emailID);
@@ -172,6 +173,6 @@ public class appointmentbookingbean extends ActionSupport implements
 
 			return SUCCESS;
 		} else
-			return ERROR;
+			return ERROR;*/
 	}
 }
